@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🧠 Resume Category Classification</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      line-height: 1.8;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background: linear-gradient(145deg, #1e1e1e, #2c2c2c);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(108, 99, 255, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-bottom: 1.5rem;
+      color: #6c63ff;
+    }
+
+    h2 {
+      color: #57c4ff;
+      margin-top: 2rem;
+      margin-bottom: 0.7rem;
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    li {
+      margin-bottom: 0.6rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    .highlight {
+      color: #ffd166;
+    }
+
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      border: 1px solid #444;
+      padding: 0.6rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: #2d2d2d;
+      color: #6c63ff;
+    }
+
+    a {
+      color: #6c63ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    code {
+      background-color: #222;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #fff;
+    }
+
+    .box {
+      background-color: #1a1a1a;
+      padding: 1rem;
+      border-left: 4px solid #57c4ff;
+      margin: 1rem 0;
+      border-radius: 6px;
+    }
+
+    .output-box {
+      background-color: #232323;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: inset 0 0 8px rgba(108, 99, 255, 0.2);
+    }
+
+    .output-box p {
+      margin: 0.4rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧠 Resume Category Classification — Project Explanation</h1>
+
+    <div class="section">
+      <h2>📌 Objective</h2>
+      <p>To develop a web-based machine learning application that:</p>
+      <ul>
+        <li>Accepts resumes in <code>.pdf</code> or <code>.txt</code> format</li>
+        <li>Extracts text and features</li>
+        <li>Predicts the job category using a trained <code>Random Forest</code> classifier with <code>TF-IDF</code></li>
+        <li>Optionally extracts named entities (skills, contact info) for better interpretability</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>📂 Dataset Overview</h2>
+      <p>We used a labeled resume dataset from Kaggle (e.g., <em>"Resume Dataset with Multi-Class Labels"</em>).</p>
+    </div>
+
+    <div class="section">
+      <h2>✅ Format</h2>
+      <ul>
+        <li><strong>Category:</strong> Job domain label (e.g., Data Science, HR, etc.)</li>
+        <li><strong>Resume:</strong> Text content of the resume</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>📊 Sample Categories</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Example Keywords</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Data Science</td>
+            <td>Python, ML, Deep Learning</td>
+          </tr>
+          <tr>
+            <td>HR</td>
+            <td>Recruitment, Payroll, Onboarding</td>
+          </tr>
+          <tr>
+            <td>Web Developer</td>
+            <td>HTML, CSS, JavaScript</td>
+          </tr>
+          <tr>
+            <td>Software Engineer</td>
+            <td>Java, C++, Algorithms</td>
+          </tr>
+          <tr>
+            <td>Advocate</td>
+            <td>Legal, Law, Court</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>📈 Dataset Stats</h2>
+      <ul>
+        <li>Total Samples: ~960 resumes</li>
+        <li>Total Categories: 25+</li>
+        <li>Languages: English</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🔍 Data Preprocessing</h2>
+      <p>Pipeline followed:</p>
+      <ul>
+        <li><strong>Cleaning Text:</strong> Lowercasing, punctuation removal, stopword removal, tokenization</li>
+        <li><strong>Feature Engineering:</strong> <code>TfidfVectorizer(max_features=3000)</code></li>
+        <li><strong>Model:</strong> <code>RandomForestClassifier(n_estimators=100, random_state=42)</code></li>
+        <li><strong>Split:</strong> Train (80%) / Test (20%)</li>
+        <li><strong>Accuracy:</strong> ~92%</li>
+        <li><strong>Saved Models:</strong> <code>resume_category_model.pkl</code>, <code>tfidf_vectorizer.pkl</code></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🔧 Web App Functionality</h2>
+      <ul>
+        <li><strong>Upload:</strong> Accepts <code>.txt</code> or <code>.pdf</code> resumes</li>
+        <li><strong>Text Extraction:</strong> <code>PyMuPDF</code> (PDFs), <code>open()</code> (text)</li>
+        <li><strong>Prediction:</strong> Uses preloaded TF-IDF and Random Forest model</li>
+        <li><strong>NER:</strong> Uses <code>spaCy</code> to extract skills, email, phone</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>⚙️ Core Components</h2>
+      <ul>
+        <li><code>app.py</code> — Flask backend</li>
+        <li><code>templates/index.html</code> — Frontend upload/view</li>
+        <li><code>train_model.py</code> — Training + saving models</li>
+        <li><code>utils.py</code> — Helper functions</li>
+        <li><code>resume_category_model.pkl</code> — Trained classifier</li>
+        <li><code>tfidf_vectorizer.pkl</code> — TF-IDF feature extractor</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>📈 Sample Output</h2>
+      <div class="output-box">
+        <p>📄 <strong>Uploaded Resume:</strong> John_Data_Scientist.pdf</p>
+        <p>🧠 <strong>Predicted Category:</strong> <span class="highlight">Data Science</span></p>
+        <p>🛠 <strong>Skills Extracted:</strong> Python, Machine Learning, Pandas, SQL</p>
+        <p>📧 <strong>Contact Email:</strong> john.doe@email.com</p>
+        <p>📞 <strong>Phone:</strong> +1-234-567-8900</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🚀 Deployment Suggestions</h2>
+      <ul>
+        <li><strong>Frontend (static):</strong> Netlify or GitHub Pages</li>
+        <li><strong>Backend (Flask):</strong> Render, Railway, or Heroku</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
