@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YOLOv8 Real-Time Object Detection - Full Description</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            padding: 40px 20px;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            max-width: 1000px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        p {
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        ul {
+            margin-left: 20px;
+            line-height: 1.6;
+        }
+        code, pre {
+            background: #eee;
+            padding: 8px;
+            display: block;
+            border-radius: 6px;
+            margin-top: 10px;
+            overflow-x: auto;
+        }
+        .section {
+            margin-top: 40px;
+        }
+        .note {
+            background-color: #dff0d8;
+            border-left: 5px solid #3c763d;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>YOLOv8 Real-Time Video Detection with Flask</h1>
+        <p><strong>One-liner:</strong> A web app that performs real-time object detection on uploaded videos using YOLOv8, and streams results in-browser.</p>
+
+        <div class="section">
+            <h2>🧠 Project Overview</h2>
+            <p>
+                This project demonstrates real-time object detection on video files using the YOLOv8 model by Ultralytics. Built with Flask and OpenCV, it enables users to upload a video, process it frame-by-frame for object detection, and stream the annotated video directly on the web interface. It serves as a foundation for integrating AI-powered vision systems into web platforms for educational demos, surveillance, or smart monitoring applications.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Motivation</h2>
+            <p>
+                The rise of lightweight deep learning models like YOLOv8n has made real-time object detection more accessible. This project aims to combine the power of deep learning and simplicity of web development to deliver an end-to-end detection demo accessible from a browser—without needing GPU-dependent desktop software.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>🛠️ Tech Stack</h2>
+            <ul>
+                <li><strong>Backend:</strong> Python 3.8+, Flask (for routing and video handling)</li>
+                <li><strong>Computer Vision:</strong> OpenCV for frame processing and streaming</li>
+                <li><strong>Deep Learning:</strong> YOLOv8n pre-trained model (Ultralytics)</li>
+                <li><strong>Frontend:</strong> HTML + Inline CSS</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>📂 Project Structure</h2>
+            <ul>
+                <li><code>app.py</code> – Main application logic and video frame streaming</li>
+                <li><code>templates/index.html</code> – Upload page with real-time feed</li>
+                <li><code>templates/description.html</code> – This detailed description</li>
+                <li><code>uploads/</code> – Auto-created folder to store uploaded videos</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🚀 How It Works</h2>
+            <ol>
+                <li>User uploads a video file through the web interface.</li>
+                <li>The server stores the video and begins reading it frame-by-frame using OpenCV.</li>
+                <li>Each frame is passed through the YOLOv8 model for object detection.</li>
+                <li>Bounding boxes and labels are drawn on detected objects.</li>
+                <li>Annotated frames are streamed back to the browser using MJPEG format.</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>📦 Installation</h2>
+            <pre><code>git clone https://github.com/Bilal-73/yolov8-flask-video-detection.git
+cd yolov8-flask-video-detection
+pip install -r requirements.txt</code></pre>
+        </div>
+
+        <div class="section">
+            <h2>📌 Features</h2>
+            <ul>
+                <li>Drag-and-drop video upload interface</li>
+                <li>Real-time inference using YOLOv8n</li>
+                <li>Stream processed video with annotations</li>
+                <li>Lightweight and browser-accessible</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>⚠️ Limitations</h2>
+            <ul>
+                <li>Inference is performed on CPU by default (may lag on large videos)</li>
+                <li>No progress bar or video controls (stream only)</li>
+                <li>Model is limited to pre-trained classes unless customized</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🔮 Future Enhancements</h2>
+            <ul>
+                <li>Support live webcam streaming</li>
+                <li>Enable GPU acceleration for faster detection</li>
+                <li>Add a timeline UI with play/pause features</li>
+                <li>Export detection results as JSON or CSV</li>
+                <li>Allow model customization and re-training</li>
+            </ul>
+        </div>
+
+        <div class="note">
+            <strong>Note:</strong> The app uses the MJPEG streaming format via a multipart HTTP response. Make sure your browser supports MJPEG (most modern ones do). The <code>yolov8n.pt</code> model is used for speed and performance. You may switch to <code>yolov8s.pt</code>, <code>yolov8m.pt</code>, or <code>yolov8l.pt</code> for better accuracy if your system supports it.
+        </div>
+    </div>
+</body>
+</html>
