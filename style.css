@@ -1,4 +1,4 @@
-/* Body Styling */
+/* /* Body Styling */
 html {
   scroll-behavior: smooth;
 }
@@ -432,3 +432,100 @@ body::after {
   opacity: 0.05; /* Subtle background image overlay */
   z-index: -1;
 }
+ */
+
+
+:root {
+      --primary: #6c63ff;
+      --accent: #16a085;
+      --bg: #0e0e0e;
+      --text: #f5f5f5;
+      --glass: rgba(255, 255, 255, 0.05);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      background: transparent;
+      backdrop-filter: blur(10px);
+    }
+
+    h1, h2, h3, .navbar-brand {
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .hero {
+      padding: 120px 0;
+      text-align: center;
+      background: linear-gradient(145deg, #1c1c1c, #0e0e0e);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      background: linear-gradient(90deg, #6c63ff, #16a085);
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #aaa;
+      max-width: 600px;
+      margin: 1rem auto;
+    }
+
+    .btn-glow {
+      border-radius: 30px;
+      padding: 10px 24px;
+      border: none;
+      background: var(--primary);
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 0 15px #6c63ff80;
+      transition: all 0.3s ease;
+    }
+
+    .btn-glow:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #6c63ffb0;
+    }
+
+    .glass-card {
+      background: var(--glass);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      transition: all 0.4s ease;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 40px rgba(108, 99, 255, 0.3);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--primary);
+    }
+
+    .footer {
+      background: #111;
+      padding: 20px;
+      color: #888;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
